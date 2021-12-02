@@ -31,6 +31,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public Employee findEmployeeByName(String firstname){
+        return employeeRepository.findByFirstname(firstname).get();
+    }
+
+    @Override
     public Employee saveEmployee(EmployeeDto employeeDto) {
         return employeeRepository.save(employeeMapper.dtoToModel(employeeDto));
     }

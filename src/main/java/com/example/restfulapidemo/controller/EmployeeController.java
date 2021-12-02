@@ -1,6 +1,7 @@
 package com.example.restfulapidemo.controller;
 
 import com.example.restfulapidemo.dto.EmployeeDto;
+import com.example.restfulapidemo.exeption.EmployeeAlreadyExist;
 import com.example.restfulapidemo.exeption.Employeenotfound;
 import com.example.restfulapidemo.mapper.EmployeeMapper;
 import com.example.restfulapidemo.model.Employee;
@@ -42,6 +43,11 @@ public class EmployeeController {
     // Thêm một id vào danh sách trong database
     @PostMapping()
     public ResponseEntity<EmployeeDto> createNewEmployee(@RequestBody EmployeeDto employeeDto) {employeeService.saveEmployee(employeeDto);
+        Employee employeeOptional = employeeService.findEmployeeByName(employeeDto.getFirstname());
+        if (employeeOptional != null){
+            throw new EmployeeAlreadyExist("Đã tồn tại bản ghi");
+        }
+        employeeService.saveEmployee(employeeDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

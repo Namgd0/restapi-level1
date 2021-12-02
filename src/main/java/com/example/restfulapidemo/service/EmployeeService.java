@@ -16,4 +16,6 @@ public interface EmployeeService {
 
     void removeEmployee(Integer id);
 
+    Employee findEmployeeByName(String firstname);
+
 }
