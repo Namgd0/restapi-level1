@@ -25,8 +25,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Optional<EmployeeDto> findEmployeeById(Integer id) {
-        return Optional.of(employeeMapper.modelToDto(employeeRepository.findById(id).get()));
+    public Optional<Employee> findEmployeeById(Integer id) {
+
+        return employeeRepository.findById(id);
     }
 
     @Override

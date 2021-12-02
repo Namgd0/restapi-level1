@@ -10,7 +10,7 @@ public interface EmployeeService {
 
     List<EmployeeDto> getallEmployee();
 
-    Optional<EmployeeDto> findEmployeeById(Integer id);
+    Optional<Employee> findEmployeeById(Integer id);
 
     Employee saveEmployee(EmployeeDto employeeDto);
 
